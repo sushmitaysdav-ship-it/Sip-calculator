@@ -1,0 +1,175 @@
+DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Smart SIP Calculator</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(rgba(255,255,255,0.92), rgba(255,255,255,0.92)),
+                  url('https://i.ibb.co/zGvhnJv/money-growth.jpg');
+      background-size: cover;
+      background-position: center;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    header {
+      text-align: center;
+      background: #2e7d32;
+      color: white;
+      padding: 25px;
+      font-size: 26px;
+      font-weight: bold;
+      letter-spacing: 1px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    }
+
+    /* Big Ad Frame */
+    .ad-banner {
+      width: 400px;
+      height: 400px;
+      margin: 30px auto;
+      border: 3px dashed #aaa;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #fffbe6;
+      font-size: 22px;
+      font-weight: bold;
+      color: #555;
+      border-radius: 12px;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+    }
+
+    .container {
+      max-width: 650px;
+      margin: 40px auto;
+      padding: 25px;
+      background: rgba(255, 255, 255, 0.97);
+      border-radius: 18px;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.25);
+    }
+
+    h2 {
+      text-align: center;
+      color: #2c7a7b;
+      font-size: 22px;
+      margin-bottom: 20px;
+    }
+
+    label {
+      font-weight: bold;
+    }
+
+    input {
+      width: 100%;
+      padding: 12px;
+      margin: 8px 0 18px;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      font-size: 15px;
+    }
+
+    button {
+      width: 100%;
+      padding: 14px;
+      background: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      font-size: 18px;
+      cursor: pointer;
+      margin-top: 5px;
+    }
+
+    button:hover {
+      background: #388e3c;
+    }
+
+    #result {
+      margin-top: 22px;
+      padding: 18px;
+      background: #e6fffa;
+      border-left: 7px solid #2c7a7b;
+      border-radius: 10px;
+      font-weight: bold;
+      font-size: 16px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 25px;
+      background: #1b1b1b;
+      color: #f1f1f1;
+      font-size: 15px;
+      margin-top: 50px;
+      border-top: 3px solid #4CAF50;
+      font-style: italic;
+      letter-spacing: 0.5px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>💰 Smart SIP Calculator</header>
+
+  <!-- Top Big Ad -->
+  <div class="ad-banner">👉 Yahan Top Banner (400x400)</div>
+
+  <!-- Main Calculator -->
+  <div class="container">
+    <h2>📊 SIP Calculator</h2>
+    <label>Monthly Investment (₹)</label>
+    <input type="number" id="monthly" placeholder="Ex: 2000">
+
+    <label>Expected Return (%)</label>
+    <input type="number" id="rate" placeholder="Ex: 12">
+
+    <label>Time Period (Years)</label>
+    <input type="number" id="years" placeholder="Ex: 10">
+
+    <button onclick="calculateSIP()">Calculate</button>
+
+    <div id="result"></div>
+  </div>
+
+  <!-- Middle Big Ad -->
+  <div class="ad-banner">👉 Yahan Middle Banner (400x400)</div>
+
+  <!-- Bottom Big Ad -->
+  <div class="ad-banner">👉 Yahan Bottom Banner (400x400)</div>
+
+  <!-- Footer -->
+  <footer>
+    🌿 Smart SIP Calculator | Designed with Simplicity & Growth  
+    © 2025 All Rights Reserved
+  </footer>
+
+  <script>
+    function calculateSIP() {
+      let P = parseFloat(document.getElementById("monthly").value);
+      let r = parseFloat(document.getElementById("rate").value) / 100 / 12;
+      let n = parseInt(document.getElementById("years").value) * 12;
+
+      if (isNaN(P) || isNaN(r) || isNaN(n)) {
+        document.getElementById("result").innerHTML = "⚠️ Please enter all values.";
+        return;
+      }
+
+      let M = P * ((Math.pow(1 + r, n) - 1) / r) * (1 + r);
+      let invested = P * n;
+      let gain = M - invested;
+
+      document.getElementById("result").innerHTML =
+        `💵 Total Investment: ₹${invested.toFixed(2)}<br>
+         📈 Estimated Value: ₹${M.toFixed(2)}<br>
+         🎯 Profit: ₹${gain.toFixed(2)}`;
+    }
+  </script>
+</body>
+</html>
